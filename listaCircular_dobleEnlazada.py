@@ -44,10 +44,3 @@ class ListaCircularDoble:
             if aux == self.primero:
                 break
 
-    def recorrer_fin_inicio(self):
-        aux = self.ultimo
-        while aux:
-            print(aux.dato)
-            aux = aux.anterior
-            if aux == self.ultimo:
-                break
