@@ -1,3 +1,6 @@
+from sqlite3 import DateFromTicks
+
+
 class Nodo:
     def __init__(self, dato):
         self.dato = dato
@@ -8,12 +11,10 @@ class ListaCircularDoble:
     def __init__(self) :
         self.primero = None
         self.ultimo = None
+        self.size = 0
 
     def vacia(self):
-        if self.primero == None:
-            return True
-        else:
-            return False
+        return self.primero == None
 
     def agregar_inicio(self, dato):
         if self.vacia():
@@ -45,7 +46,19 @@ class ListaCircularDoble:
             aux = aux.siguiente
             if aux == self.primero:
                 break
-            
+    
+    def busqueda(self, elemento):
+        aux = self.primero
+        while aux:
+            if elemento == aux.dato:
+                print(f"Anterior: {aux.anterior.dato}, Actual: {aux.dato}, Siguiente: {aux.siguiente.dato}")
+                break
+            aux = aux.siguiente 
+
+
+
+
+
 
 lista = ListaCircularDoble()
 
@@ -54,9 +67,11 @@ lista.agregar_final(12)
 lista.agregar_final(10)
 lista.agregar_final(8)
 lista.agregar_final(58)
+lista.agregar_final(20)
 
 lista.recorrer_inicio_fin()
 print('---------------------')
 
 numero = int(input("Seleccione número: "))
 
+lista.busqueda(numero)
